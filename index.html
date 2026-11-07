@@ -4,54 +4,97 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark">
-<title>Apple TV Home — Кинотеатр</title>
+<title>TV Home</title>
 <style>
-:root{--bg:#080a10;--panel:#151923;--muted:#9ba4b5;--white:#f5f7fb;--accent:#79aaff}
+:root{--bg:#07090e;--panel:#141923;--muted:#aab3c2;--white:#f6f7fb;--blue:#8eb8ff}
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%;background:var(--bg);color:var(--white);font-family:Arial,Helvetica,sans-serif}
-body{background:radial-gradient(ellipse at 75% 0%,#25324b 0%,#111827 28%,#080a10 68%);overflow-x:hidden}
-main{width:min(1500px,94vw);margin:auto;padding:4vh 0 5vh}
-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:5vh}
-.brand{font-size:clamp(22px,2.5vw,36px);font-weight:700;letter-spacing:-1px}
-.brand span{color:#aebbd1;font-weight:400}
-.clock{font-size:clamp(16px,1.5vw,22px);color:#c2cada}
-.hero{padding:3vh 3vw 4vh;border-radius:28px;background:linear-gradient(100deg,rgba(26,38,59,.96),rgba(13,18,29,.72)),linear-gradient(135deg,#314665,#111827);box-shadow:0 24px 80px #0008;margin-bottom:4vh;min-height:28vh;display:flex;flex-direction:column;justify-content:center}
-.eyebrow{color:#a8c8ff;text-transform:uppercase;letter-spacing:3px;font-size:clamp(11px,1vw,15px)}
-h1{font-size:clamp(30px,5vw,68px);line-height:1.04;margin:1.2vh 0}
-.hero p{color:#c3ccda;font-size:clamp(15px,1.5vw,21px);margin:0;max-width:760px}
-h2{font-size:clamp(20px,2vw,28px);margin:0 0 2vh}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.tile{min-height:15vh;border:1px solid #ffffff16;border-radius:22px;background:linear-gradient(145deg,#202838,#111722);display:flex;align-items:flex-end;padding:22px;text-decoration:none;color:var(--white);font-size:clamp(17px,1.7vw,24px);font-weight:700;box-shadow:0 12px 35px #0005;transition:.15s}
-.tile:focus,.tile:hover{outline:3px solid var(--accent);transform:scale(1.025);background:linear-gradient(145deg,#2b3d59,#172235)}
-.tile small{display:block;color:#aebbd1;font-size:clamp(11px,1vw,14px);font-weight:400;margin-top:7px}
-.icon{font-size:clamp(28px,3vw,42px);display:block;margin-bottom:10px}
-footer{margin-top:4vh;color:#7f899a;font-size:14px}
-@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.tile{min-height:16vh}}
+body{background:radial-gradient(ellipse at 78% -8%,#273955 0%,#111927 31%,#07090e 70%);overflow-x:hidden}
+main{width:min(1600px,94vw);margin:auto;padding:3.5vh 0 5vh}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:3vh}
+.brand{font-size:clamp(23px,2.4vw,36px);font-weight:700;letter-spacing:-1px}
+.brand span{font-weight:400;color:#b8c5d9}
+.clock{font-size:clamp(16px,1.5vw,22px);color:#d4dbea}
+.hero{min-height:30vh;border-radius:26px;padding:3vh 3vw;display:flex;flex-direction:column;justify-content:center;margin-bottom:3.5vh;background:linear-gradient(90deg,rgba(8,13,23,.97),rgba(12,20,34,.58)),radial-gradient(circle at 80% 30%,#5276a6,#17243a 45%,#0b101b 78%);box-shadow:0 22px 65px #0008;border:1px solid #ffffff12}
+.kicker{font-size:clamp(11px,1vw,15px);letter-spacing:3px;text-transform:uppercase;color:#a9caff}
+h1{font-size:clamp(34px,5vw,70px);line-height:1.02;margin:1.2vh 0}
+.hero p{font-size:clamp(15px,1.4vw,21px);color:#c4cede;margin:0;max-width:760px}
+.actions{display:flex;gap:12px;margin-top:2.3vh;flex-wrap:wrap}
+.action{display:inline-block;padding:12px 20px;border-radius:12px;background:#f4f6fb;color:#101725;text-decoration:none;font-weight:700;font-size:clamp(13px,1.1vw,16px)}
+.action.secondary{background:#ffffff18;color:#fff;border:1px solid #ffffff30}
+h2{font-size:clamp(20px,2vw,28px);margin:0 0 1.6vh}
+.section{margin:3vh 0}
+.poster-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+.poster{display:block;position:relative;min-height:28vh;aspect-ratio:2/3;border-radius:17px;overflow:hidden;text-decoration:none;color:white;border:1px solid #ffffff20;box-shadow:0 12px 32px #0007;transition:transform .16s,outline .16s}
+.poster:focus,.poster:hover{outline:3px solid var(--blue);outline-offset:3px;transform:scale(1.035)}
+.art{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:14px;font-weight:800;letter-spacing:1px;font-size:clamp(18px,2.1vw,30px);text-shadow:0 3px 15px #000}
+.art:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0000 25%,#000c 100%)}
+.art span{position:relative;z-index:1}
+.poster-title{position:absolute;z-index:2;left:14px;right:14px;bottom:15px;font-size:clamp(13px,1.2vw,18px);font-weight:700}
+.poster-title small{display:block;color:#c7d0df;font-size:.78em;font-weight:400;margin-top:5px}
+.a1{background:radial-gradient(circle at 50% 28%,#f1b35b,#8a3b23 35%,#171a2b 78%)}
+.a2{background:radial-gradient(circle at 48% 30%,#9bbde8,#355c8b 38%,#111a2b 80%)}
+.a3{background:radial-gradient(circle at 55% 30%,#e6b16c,#80452c 36%,#17101a 80%)}
+.a4{background:radial-gradient(circle at 50% 25%,#a8d8dc,#28747d 38%,#101b28 80%)}
+.a5{background:radial-gradient(circle at 50% 30%,#d7a2e5,#673e8c 38%,#11101e 80%)}
+.a6{background:radial-gradient(circle at 50% 28%,#d8d7c2,#77765a 38%,#151b1d 80%)}
+.a7{background:radial-gradient(circle at 50% 28%,#f1a17d,#943f3b 38%,#17101a 80%)}
+.a8{background:radial-gradient(circle at 50% 28%,#a6b4f4,#4651a1 38%,#101322 80%)}
+.app-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.app{min-height:12vh;border-radius:17px;padding:18px;background:linear-gradient(145deg,#202a3b,#111722);border:1px solid #ffffff16;color:white;text-decoration:none;display:flex;align-items:center;gap:15px;font-size:clamp(16px,1.5vw,22px);font-weight:700}
+.app:focus,.app:hover{outline:3px solid var(--blue);transform:scale(1.02)}
+.app i{font-style:normal;font-size:clamp(25px,3vw,40px)}
+.app small{display:block;color:#aeb9ca;font-size:clamp(11px,1vw,14px);font-weight:400;margin-top:5px}
+footer{margin-top:4vh;color:#778397;font-size:13px}
+@media(max-width:850px){.poster-row{grid-template-columns:repeat(3,minmax(0,1fr))}.app-grid{grid-template-columns:repeat(2,1fr)}.poster{min-height:22vh}}
+@media(max-width:520px){.poster-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 </head>
 <body>
 <main>
-<header><div class="brand"> <span>КИНОТЕАТР</span></div><div class="clock" id="clock">Добро пожаловать</div></header>
+<header><div class="brand">TV <span>HOME</span></div><div class="clock" id="clock">Добро пожаловать</div></header>
 <section class="hero">
-<div class="eyebrow">Ваш домашний кинотеатр</div>
+<div class="kicker">Ваш домашний кинотеатр</div>
 <h1>Что будем смотреть?</h1>
-<p>Фильмы, сериалы и ваша личная коллекция — всё в одном месте.</p>
+<p>Любимые фильмы, сериалы и личная коллекция — на одном экране.</p>
+<div class="actions">
+<a class="action" href="https://www.kinopoisk.ru/">Смотреть кино</a>
+<a class="action secondary" href="#collection">Моя коллекция</a>
+</div>
 </section>
+<section class="section">
+<h2>Популярное кино</h2>
+<div class="poster-row">
+<a class="poster" href="https://www.kinopoisk.ru/index.php?kp_query=Интерстеллар"><div class="art a1"><span>К ЗВЁЗДАМ</span></div><div class="poster-title">Интерстеллар<small>Фантастика · 2014</small></div></a>
+<a class="poster" href="https://www.kinopoisk.ru/index.php?kp_query=Начало"><div class="art a2"><span>СЛОИ<br>РЕАЛЬНОСТИ</span></div><div class="poster-title">Начало<small>Фантастика · 2010</small></div></a>
+<a class="poster" href="https://www.kinopoisk.ru/index.php?kp_query=Гладиатор"><div class="art a3"><span>АРЕНА<br>СУДЬБЫ</span></div><div class="poster-title">Гладиатор<small>Драма · 2000</small></div></a>
+<a class="poster" href="https://www.kinopoisk.ru/index.php?kp_query=Дюна"><div class="art a4"><span>ПЕСОК<br>И ВРЕМЯ</span></div><div class="poster-title">Дюна<small>Фантастика · 2021</small></div></a>
+<a class="poster" href="https://www.kinopoisk.ru/index.php?kp_query=Матрица"><div class="art a5"><span>ВЫБЕРИ<br>РЕАЛЬНОСТЬ</span></div><div class="poster-title">Матрица<small>Фантастика · 1999</small></div></a>
+</div>
+</section>
+<section class="section" id="collection">
+<h2>Моя коллекция</h2>
+<div class="poster-row">
+<a class="poster" href="https://www.kinopoisk.ru/index.php?kp_query=Железный%20человек"><div class="art a6"><span>IRON<br>HERO</span></div><div class="poster-title">Железный человек<small>Marvel · 2008</small></div></a>
+<a class="poster" href="https://www.kinopoisk.ru/index.php?kp_query=Мстители"><div class="art a7"><span>ВМЕСТЕ<br>СИЛЬНЕЕ</span></div><div class="poster-title">Мстители<small>Marvel · 2012</small></div></a>
+<a class="poster" href="https://www.kinopoisk.ru/index.php?kp_query=Стражи%20Галактики"><div class="art a8"><span>КОСМИЧЕСКАЯ<br>КОМАНДА</span></div><div class="poster-title">Стражи Галактики<small>Marvel · 2014</small></div></a>
+<a class="poster" href="https://www.kinopoisk.ru/index.php?kp_query=Чёрная%20пантера"><div class="art a2"><span>ВОИН<br>ВАКАНДЫ</span></div><div class="poster-title">Чёрная пантера<small>Marvel · 2018</small></div></a>
+<a class="poster" href="https://www.kinopoisk.ru/index.php?kp_query=Мстители%20Финал"><div class="art a3"><span>ФИНАЛЬНАЯ<br>БИТВА</span></div><div class="poster-title">Мстители: Финал<small>Marvel · 2019</small></div></a>
+</div>
+</section>
+<section class="section">
 <h2>Приложения</h2>
-<section class="grid">
-<a class="tile" href="https://www.kinopoisk.ru/"><div><span class="icon">▶</span>Кинопоиск<small>Фильмы и сериалы</small></div></a>
-<a class="tile" href="https://tv.apple.com/"><div><span class="icon"></span>Apple TV<small>Оригинальные фильмы и сериалы</small></div></a>
-<a class="tile" href="https://www.youtube.com/"><div><span class="icon">▷</span>YouTube<small>Видео и каналы</small></div></a>
-<a class="tile" href="https://www.netflix.com/"><div><span class="icon">N</span>Netflix<small>Фильмы и сериалы</small></div></a>
-<a class="tile" href="https://www.lg.com/"><div><span class="icon">▣</span>LG Home<small>Вернуться к телевизору</small></div></a>
-<a class="tile" href="https://www.google.com/"><div><span class="icon">⌕</span>Поиск<small>Найти фильм или информацию</small></div></a>
-<a class="tile" href="#"><div><span class="icon">▤</span>Моя коллекция<small>Подключим позже</small></div></a>
-<a class="tile" href="#"><div><span class="icon">⚙</span>Настройки меню<small>Следующий этап проекта</small></div></a>
+<div class="app-grid">
+<a class="app" href="https://www.kinopoisk.ru/"><i>▶</i><div>Кинопоиск<small>Фильмы и сериалы</small></div></a>
+<a class="app" href="https://tv.apple.com/"><i></i><div>Apple TV<small>Оригинальные проекты</small></div></a>
+<a class="app" href="https://www.youtube.com/"><i>▷</i><div>YouTube<small>Видео и каналы</small></div></a>
+<a class="app" href="https://www.netflix.com/"><i>N</i><div>Netflix<small>Фильмы и сериалы</small></div></a>
+</div>
 </section>
-<footer>Apple TV Home — персональная стартовая страница. Это веб-меню, а не системная оболочка webOS.</footer>
+<footer>TV Home · Персональное веб-меню для LG webOS. Используйте стрелки пульта для выбора и OK для открытия.</footer>
 </main>
 <script>
-function tick(){const d=new Date();document.getElementById('clock').textContent=d.toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});}
+function tick(){const d=new Date();document.getElementById('clock').textContent=d.toLocaleDateString('ru-RU',{weekday:'long',day:'numeric',month:'long'})+' · '+d.toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});}
 tick();setInterval(tick,30000);
 </script>
 </body>
